@@ -30,9 +30,7 @@ status_done
 #create the cache dir if it doesn't exist
 mkdir -p $CACHE_DIR
 
-for DIR in ".m2" ".maven" ; do
-  cp -r $CACHE_DIR/$DIR $BUILD_DIR/$DIR
-done
+
 
 # change to cache dir to install maven
 cd $CACHE_DIR
@@ -51,6 +49,9 @@ elif [ -f $BUILD_DIR/settings.xml ]; then
 else
   unset MAVEN_SETTINGS_OPT
 fi
+for DIR in ".m2" ".maven" ; do
+  cp -r $CACHE_DIR/$DIR $BUILD_DIR/$DIR
+done
 
 # change to build dir to run maven
 cd $BUILD_DIR
